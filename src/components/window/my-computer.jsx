@@ -38,24 +38,31 @@ const MyComputerApp = () => {
 
   const folders = {
     'C:': [
-      { name: 'Windows', type: 'folder', icon: '📁', size: '', modified: '10/25/1998' },
-      { name: 'Program Files', type: 'folder', icon: '📁', size: '', modified: '11/15/1998' },
-      { name: 'My Documents', type: 'folder', icon: '📂', size: '', modified: '12/01/1998' },
-      { name: 'Temp', type: 'folder', icon: '📁', size: '', modified: '12/10/1998' },
-      { name: 'autoexec.bat', type: 'file', icon: '📄', size: '1 KB', modified: '10/25/1998' },
-      { name: 'config.sys', type: 'file', icon: '📄', size: '2 KB', modified: '10/25/1998' }
+      { name: 'Windows', type: 'folder', icon: '📁', size: '', modified: '25/10/1998' },
+      { name: 'Program Files', type: 'folder', icon: '📁', size: '', modified: '15/11/1998' },
+      { name: 'My Documents', type: 'folder', icon: '📂', size: '', modified: '01/12/1998' },
+      { name: 'Temp', type: 'folder', icon: '📁', size: '', modified: '10/12/1998' },
+      { name: 'autoexec.bat', type: 'file', icon: '📄', size: '1 KB', modified: '25/10/1998' },
+      { name: 'config.sys', type: 'file', icon: '📄', size: '2 KB', modified: '25/10/1998' }
     ],
     'C:/Windows': [
-      { name: 'System', type: 'folder', icon: '📁', size: '', modified: '10/25/1998' },
-      { name: 'System32', type: 'folder', icon: '📁', size: '', modified: '10/25/1998' },
-      { name: 'Desktop', type: 'folder', icon: '📁', size: '', modified: '12/01/1998' },
-      { name: 'notepad.exe', type: 'file', icon: '📝', size: '48 KB', modified: '10/25/1998' },
-      { name: 'calc.exe', type: 'file', icon: '🧮', size: '32 KB', modified: '10/25/1998' }
+      { name: 'System', type: 'folder', icon: '📁', size: '', modified: '25/10/1998' },
+      { name: 'System32', type: 'folder', icon: '📁', size: '', modified: '25/10/1998' },
+      { name: 'Desktop', type: 'folder', icon: '📁', size: '', modified: '01/12/1998' },
+      { name: 'notepad.exe', type: 'file', icon: '📝', size: '48 KB', modified: '25/10/1998' },
+      { name: 'calc.exe', type: 'file', icon: '🧮', size: '32 KB', modified: '25/10/1998' }
+    ],
+    'C:/Windows/System32' : [
+      { name: 'what', type: 'file', icon: '🥴', size: '69 KB', modified: '18/08/1945' },
+      { name: 'do', type: 'file', icon: '🤏', size: '420 KB', modified: '18/08/1945' },
+      { name: 'we', type: 'file', icon: '👩🏿‍🦲', size: '69 KB', modified: '18/08/1945' },
+      { name: 'have', type: 'file', icon: '☠️', size: '420 KB', modified: '18/08/1945' },
+      { name: 'here', type: 'file', icon: '👀', size: '69 KB', modified: '18/08/1945' }
     ],
     'C:/Program Files': [
-      { name: 'Accessories', type: 'folder', icon: '📁', size: '', modified: '10/25/1998' },
-      { name: 'Games', type: 'folder', icon: '📁', size: '', modified: '11/01/1998' },
-      { name: 'Internet Explorer', type: 'folder', icon: '📁', size: '', modified: '10/25/1998' }
+      { name: 'Accessories', type: 'folder', icon: '📁', size: '', modified: '25/10/1998' },
+      { name: 'Games', type: 'folder', icon: '📁', size: '', modified: '01/11/1998' },
+      { name: 'Internet Explorer', type: 'folder', icon: '📁', size: '', modified: '25/10/1998' }
     ]
   };
 
