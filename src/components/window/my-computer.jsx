@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import MyDocumentsApp from './my-documents.jsx'; 
 
 const MyComputerApp = () => {
   const [currentView, setCurrentView] = useState('drives');
   const [currentPath, setCurrentPath] = useState('');
   const [selectedItem, setSelectedItem] = useState(null);
 
-  // Mock file system data
   const drives = [
     {
       id: 'floppy',
@@ -52,7 +52,7 @@ const MyComputerApp = () => {
       { name: 'notepad.exe', type: 'file', icon: '📝', size: '48 KB', modified: '25/10/1998' },
       { name: 'calc.exe', type: 'file', icon: '🧮', size: '32 KB', modified: '25/10/1998' }
     ],
-    'C:/Windows/System32' : [
+    'C:/Windows/System32': [
       { name: 'what', type: 'file', icon: '🥴', size: '69 KB', modified: '18/08/1945' },
       { name: 'do', type: 'file', icon: '🤏', size: '420 KB', modified: '18/08/1945' },
       { name: 'we', type: 'file', icon: '👩🏿‍🦲', size: '69 KB', modified: '18/08/1945' },
@@ -66,19 +66,36 @@ const MyComputerApp = () => {
     ]
   };
 
+  const [inMyDocuments, setInMyDocuments] = useState(false);
+
   const handleItemDoubleClick = (item) => {
     if (item.type === 'drive' && item.accessible) {
       setCurrentView('folder');
       setCurrentPath(item.id === 'hard-disk' ? 'C:' : item.name);
+      setInMyDocuments(false);
     } else if (item.type === 'folder') {
-      const newPath = currentPath ? `${currentPath}/${item.name}` : item.name;
-      setCurrentPath(newPath);
+      if (
+        (currentPath === 'C:' && item.name === 'My Documents') ||
+        (currentPath === '' && item.name === 'My Documents')
+      ) {
+        setInMyDocuments(true);
+      } else {
+        const newPath = currentPath ? `${currentPath}/${item.name}` : item.name;
+        setCurrentPath(newPath);
+        setInMyDocuments(false);
+      }
     } else if (item.type === 'drive' && !item.accessible) {
       alert(`${item.name} is not accessible. Please insert a disk.`);
     }
   };
 
   const handleBack = () => {
+    if (inMyDocuments) {
+      setInMyDocuments(false);
+      setCurrentPath('C:');
+      setCurrentView('folder');
+      return;
+    }
     if (currentPath.includes('/')) {
       const pathParts = currentPath.split('/');
       pathParts.pop();
@@ -90,6 +107,12 @@ const MyComputerApp = () => {
   };
 
   const handleUp = () => {
+    if (inMyDocuments) {
+      setInMyDocuments(false);
+      setCurrentPath('C:');
+      setCurrentView('folder');
+      return;
+    }
     if (currentPath) {
       handleBack();
     }
@@ -104,41 +127,42 @@ const MyComputerApp = () => {
   };
 
   const getAddressBarText = () => {
-    if (currentView === 'drives') {
-      return 'My Computer';
-    }
-    return currentPath.replace('/', '\\');
+    if (inMyDocuments) return 'C:\\My Documents';
+    if (currentView === 'drives') return 'My Computer';
+    return currentPath.replace(/\//g, '\\');
   };
 
   return (
     <div className="h-full flex flex-col bg-white">
-      {/* Toolbar */}
-      <div className="bg-gray-200 border-b border-gray-400 p-1">
-        <div className="flex gap-1">
-          <button 
-            className="px-3 py-1 text-xs bg-gray-300 border border-gray-100 border-r-gray-600 border-b-gray-600 hover:bg-gray-400 disabled:opacity-50"
-            onClick={handleBack}
-            disabled={currentView === 'drives' && !currentPath}
-          >
-            ← Back
-          </button>
-          <button 
-            className="px-3 py-1 text-xs bg-gray-300 border border-gray-100 border-r-gray-600 border-b-gray-600 hover:bg-gray-400"
-            onClick={handleUp}
-            disabled={currentView === 'drives'}
-          >
-            ↑ Up
-          </button>
-          <div className="flex-1 mx-2">
-            <div className="bg-white border border-gray-600 px-2 py-1 text-xs">
-              Address: {getAddressBarText()}
+      {/* Toolbar - only show when not in My Documents */}
+      {!inMyDocuments && (
+        <div className="bg-gray-200 border-b border-gray-400 p-1">
+          <div className="flex gap-1">
+            <button
+              className="px-3 py-1 text-xs bg-gray-300 border border-gray-100 border-r-gray-600 border-b-gray-600 hover:bg-gray-400 disabled:opacity-50"
+              onClick={handleBack}
+              disabled={currentView === 'drives' && !currentPath}
+            >
+              ← Back
+            </button>
+            <button
+              className="px-3 py-1 text-xs bg-gray-300 border border-gray-100 border-r-gray-600 border-b-gray-600 hover:bg-gray-400"
+              onClick={handleUp}
+              disabled={currentView === 'drives'}
+            >
+              ↑ Up
+            </button>
+            <div className="flex-1 mx-2">
+              <div className="bg-white border border-gray-600 px-2 py-1 text-xs">
+                Address: {getAddressBarText()}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Status info */}
-      {currentView === 'drives' && (
+      {currentView === 'drives' && !inMyDocuments && (
         <div className="bg-gray-100 border-b border-gray-400 p-2 text-xs">
           Select an item to view its description.
         </div>
@@ -146,15 +170,17 @@ const MyComputerApp = () => {
 
       {/* Main content area */}
       <div className="flex-1 overflow-auto">
-        {currentView === 'drives' ? (
-          <DrivesView 
-            drives={getCurrentItems()} 
+        {inMyDocuments ? (
+          <MyDocumentsApp />
+        ) : currentView === 'drives' ? (
+          <DrivesView
+            drives={getCurrentItems()}
             selectedItem={selectedItem}
             onItemClick={setSelectedItem}
             onItemDoubleClick={handleItemDoubleClick}
           />
         ) : (
-          <FolderView 
+          <FolderView
             items={getCurrentItems()}
             selectedItem={selectedItem}
             onItemClick={setSelectedItem}
@@ -165,14 +191,16 @@ const MyComputerApp = () => {
       </div>
 
       {/* Status bar */}
-      <div className="bg-gray-200 border-t border-gray-400 px-2 py-1 text-xs flex justify-between">
-        <span>
-          {getCurrentItems().length} object(s)
-        </span>
-        <span>
-          {selectedItem && selectedItem.size && `${selectedItem.size}`}
-        </span>
-      </div>
+      {!inMyDocuments && (
+        <div className="bg-gray-200 border-t border-gray-400 px-2 py-1 text-xs flex justify-between">
+          <span>
+            {getCurrentItems().length} object(s)
+          </span>
+          <span>
+            {selectedItem && selectedItem.size && `${selectedItem.size}`}
+          </span>
+        </div>
+      )}
     </div>
   );
 };
@@ -184,11 +212,10 @@ const DrivesView = ({ drives, selectedItem, onItemClick, onItemDoubleClick }) =>
         {drives.map(drive => (
           <div
             key={drive.id}
-            className={`flex flex-col items-center p-4 cursor-pointer rounded border-2 ${
-              selectedItem?.id === drive.id 
-                ? 'border-blue-500 bg-blue-100' 
+            className={`flex flex-col items-center p-4 cursor-pointer rounded border-2 ${selectedItem?.id === drive.id
+                ? 'border-blue-500 bg-blue-100'
                 : 'border-transparent hover:bg-gray-100'
-            }`}
+              }`}
             onClick={() => onItemClick(drive)}
             onDoubleClick={() => onItemDoubleClick(drive)}
           >
@@ -209,13 +236,13 @@ const DrivesView = ({ drives, selectedItem, onItemClick, onItemDoubleClick }) =>
         <div className="mt-8 p-4 bg-gray-50 border border-gray-300 rounded">
           <h3 className="font-bold text-sm mb-2">{selectedItem.name}</h3>
           <div className="text-xs space-y-1">
-            <div>Type: {selectedItem.type === 'floppy' ? '3½ Inch Floppy Disk' : 
-                             selectedItem.type === 'hard-disk' ? 'Local Disk' : 
-                             'CD-ROM Disc'}</div>
+            <div>Type: {selectedItem.type === 'floppy' ? '3½ Inch Floppy Disk' :
+              selectedItem.type === 'hard-disk' ? 'Local Disk' :
+                'CD-ROM Disc'}</div>
             <div>Total size: {selectedItem.size}</div>
             <div>Free space: {selectedItem.free}</div>
-            <div>Used space: {selectedItem.accessible ? 
-              `${parseFloat(selectedItem.size) - parseFloat(selectedItem.free)} ${selectedItem.size.split(' ')[1]}` : 
+            <div>Used space: {selectedItem.accessible ?
+              `${parseFloat(selectedItem.size) - parseFloat(selectedItem.free)} ${selectedItem.size.split(' ')[1]}` :
               'Unknown'}</div>
           </div>
         </div>
@@ -242,9 +269,8 @@ const FolderView = ({ items, selectedItem, onItemClick, onItemDoubleClick, curre
         {items.map((item, index) => (
           <div
             key={`${item.name}-${index}`}
-            className={`flex text-xs cursor-pointer border-b border-gray-200 hover:bg-blue-100 ${
-              selectedItem?.name === item.name ? 'bg-blue-200' : ''
-            }`}
+            className={`flex text-xs cursor-pointer border-b border-gray-200 hover:bg-blue-100 ${selectedItem?.name === item.name ? 'bg-blue-200' : ''
+              }`}
             onClick={() => onItemClick(item)}
             onDoubleClick={() => onItemDoubleClick(item)}
           >
@@ -256,10 +282,10 @@ const FolderView = ({ items, selectedItem, onItemClick, onItemDoubleClick, curre
               {item.size}
             </div>
             <div className="w-20 p-1 border-r border-gray-200">
-              {item.type === 'folder' ? 'File Folder' : 
-               item.name.endsWith('.exe') ? 'Application' :
-               item.name.endsWith('.bat') ? 'MS-DOS Batch File' :
-               item.name.endsWith('.sys') ? 'System File' : 'File'}
+              {item.type === 'folder' ? 'File Folder' :
+                item.name.endsWith('.exe') ? 'Application' :
+                  item.name.endsWith('.bat') ? 'MS-DOS Batch File' :
+                    item.name.endsWith('.sys') ? 'System File' : 'File'}
             </div>
             <div className="w-24 p-1 text-right">
               {item.modified || ''}

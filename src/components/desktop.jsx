@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import MyComputerApp from './window/my-computer.jsx';
+import MyDocumentsApp from './window/my-documents.jsx'; 
 
-// Desktop Component
 const Desktop = () => {
   const [windows, setWindows] = useState([]);
   const [nextId, setNextId] = useState(1);
@@ -55,7 +55,6 @@ const Desktop = () => {
   };
 
   const handleDesktopClick = (e) => {
-    // Clear icon selection when clicking on empty desktop area
     if (e.target === e.currentTarget) {
       setSelectedIcon(null);
     }
@@ -69,7 +68,7 @@ const Desktop = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundColor: '#008080' // Fallback teal color
+        backgroundColor: '#008080' 
       }}
       onClick={handleDesktopClick}
     >
@@ -131,10 +130,10 @@ const Desktop = () => {
   );
 };
 
-// Desktop Icon Component
+
 const DesktopIcon = ({ iconSrc, label, id, selected, onSelect, onDoubleClick }) => {
   const handleClick = (e) => {
-    e.stopPropagation(); // Prevent desktop click handler from firing
+    e.stopPropagation(); 
     onSelect();
   };
 
@@ -144,7 +143,7 @@ const DesktopIcon = ({ iconSrc, label, id, selected, onSelect, onDoubleClick }) 
         selected ? 'bg-blue-600 text-white' : 'text-white'
       }`}
       style={{
-        textShadow: '1px 1px 2px rgba(0,0,0,0.8)' // Add text shadow for better readability
+        textShadow: '1px 1px 2px rgba(0,0,0,0.8)' 
       }}
       onClick={handleClick}
       onDoubleClick={onDoubleClick}
@@ -155,7 +154,7 @@ const DesktopIcon = ({ iconSrc, label, id, selected, onSelect, onDoubleClick }) 
         className="w-8 h-8 mb-1 pixelated"
         style={{ 
           imageRendering: 'pixelated',
-          filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.5))' // Add shadow for better visibility
+          filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.5))' 
         }}
         draggable={false}
       />
@@ -164,7 +163,7 @@ const DesktopIcon = ({ iconSrc, label, id, selected, onSelect, onDoubleClick }) 
   );
 };
 
-// Window Component with Resizable functionality
+
 const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdate }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
@@ -214,7 +213,6 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
       let newX = window.x;
       let newY = window.y;
 
-      // Minimum window size
       const minWidth = 250;
       const minHeight = 200;
 
@@ -268,7 +266,7 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
   const getWindowContent = () => {
     switch (window.type) {
       case 'explorer':
-        return <ExplorerContent />;
+        return <ExplorerContent title={window.title} />; 
       case 'recycle':
         return <RecycleBinContent />;
       case 'solitaire':
@@ -412,9 +410,12 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
   );
 };
 
-const ExplorerContent = () => (
-  <MyComputerApp />
-);
+const ExplorerContent = ({ title }) => {
+  if (title === 'My Documents') {
+    return <MyDocumentsApp />;
+  }
+  return <MyComputerApp />;
+};
 
 const RecycleBinContent = () => (
   <div className="text-center py-8">
