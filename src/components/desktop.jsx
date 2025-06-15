@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import MyComputerApp from './window/my-computer.jsx';
 
-
 // Desktop Component
 const Desktop = () => {
   const [windows, setWindows] = useState([]);
@@ -16,8 +15,8 @@ const Desktop = () => {
       title,
       x: 100 + (nextId * 20),
       y: 100 + (nextId * 20),
-      width: 400,
-      height: 300,
+      width: 500,
+      height: 400,
       minimized: false,
       maximized: false
     };
@@ -165,15 +164,17 @@ const DesktopIcon = ({ iconSrc, label, id, selected, onSelect, onDoubleClick }) 
   );
 };
 
-// Window Component
+// Window Component with Resizable functionality
 const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdate }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [isResizing, setIsResizing] = useState(false);
+  const [resizeDirection, setResizeDirection] = useState('');
+  const [resizeStart, setResizeStart] = useState({ x: 0, y: 0, width: 0, height: 0 });
   const windowRef = useRef(null);
 
   const handleMouseDown = (e) => {
-    if (e.target.closest('.window-controls')) return;
+    if (e.target.closest('.window-controls') || e.target.closest('.resize-handle')) return;
     
     onBringToFront();
     setIsDragging(true);
@@ -184,11 +185,65 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
     });
   };
 
+  const handleResizeStart = (direction, e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsResizing(true);
+    setResizeDirection(direction);
+    setResizeStart({
+      x: e.clientX,
+      y: e.clientY,
+      width: window.width,
+      height: window.height
+    });
+    onBringToFront();
+  };
+
   const handleMouseMove = (e) => {
     if (isDragging) {
       onUpdate({
         x: Math.max(0, e.clientX - dragOffset.x),
         y: Math.max(0, e.clientY - dragOffset.y)
+      });
+    } else if (isResizing) {
+      const deltaX = e.clientX - resizeStart.x;
+      const deltaY = e.clientY - resizeStart.y;
+      
+      let newWidth = resizeStart.width;
+      let newHeight = resizeStart.height;
+      let newX = window.x;
+      let newY = window.y;
+
+      // Minimum window size
+      const minWidth = 250;
+      const minHeight = 200;
+
+      if (resizeDirection.includes('right')) {
+        newWidth = Math.max(minWidth, resizeStart.width + deltaX);
+      }
+      if (resizeDirection.includes('left')) {
+        const proposedWidth = resizeStart.width - deltaX;
+        if (proposedWidth >= minWidth) {
+          newWidth = proposedWidth;
+          newX = window.x + deltaX;
+        }
+      }
+      if (resizeDirection.includes('bottom')) {
+        newHeight = Math.max(minHeight, resizeStart.height + deltaY);
+      }
+      if (resizeDirection.includes('top')) {
+        const proposedHeight = resizeStart.height - deltaY;
+        if (proposedHeight >= minHeight) {
+          newHeight = proposedHeight;
+          newY = window.y + deltaY;
+        }
+      }
+
+      onUpdate({
+        x: newX,
+        y: newY,
+        width: newWidth,
+        height: newHeight
       });
     }
   };
@@ -196,6 +251,7 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
   const handleMouseUp = () => {
     setIsDragging(false);
     setIsResizing(false);
+    setResizeDirection('');
   };
 
   useEffect(() => {
@@ -207,7 +263,7 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
         document.removeEventListener('mouseup', handleMouseUp);
       };
     }
-  }, [isDragging, isResizing, dragOffset]);
+  }, [isDragging, isResizing, dragOffset, resizeStart, resizeDirection]);
 
   const getWindowContent = () => {
     switch (window.type) {
@@ -222,10 +278,24 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
     }
   };
 
+  const getCursorStyle = (direction) => {
+    const cursors = {
+      'top': 'n-resize',
+      'bottom': 's-resize',
+      'left': 'w-resize',
+      'right': 'e-resize',
+      'top-left': 'nw-resize',
+      'top-right': 'ne-resize',
+      'bottom-left': 'sw-resize',
+      'bottom-right': 'se-resize'
+    };
+    return cursors[direction] || 'default';
+  };
+
   return (
     <div
       ref={windowRef}
-      className={`absolute bg-gray-300 shadow-lg ${
+      className={`absolute bg-gray-300 shadow-lg select-none ${
         isActive ? 'z-50' : 'z-40'
       }`}
       style={{
@@ -238,6 +308,60 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
       }}
       onClick={onBringToFront}
     >
+      {/* Resize Handles */}
+      {/* Top edge */}
+      <div 
+        className="resize-handle absolute top-0 left-2 right-2 h-1 z-10"
+        style={{ cursor: getCursorStyle('top') }}
+        onMouseDown={(e) => handleResizeStart('top', e)}
+      />
+      
+      {/* Bottom edge */}
+      <div 
+        className="resize-handle absolute bottom-0 left-2 right-2 h-1 z-10"
+        style={{ cursor: getCursorStyle('bottom') }}
+        onMouseDown={(e) => handleResizeStart('bottom', e)}
+      />
+      
+      {/* Left edge */}
+      <div 
+        className="resize-handle absolute left-0 top-2 bottom-2 w-1 z-10"
+        style={{ cursor: getCursorStyle('left') }}
+        onMouseDown={(e) => handleResizeStart('left', e)}
+      />
+      
+      {/* Right edge */}
+      <div 
+        className="resize-handle absolute right-0 top-2 bottom-2 w-1 z-10"
+        style={{ cursor: getCursorStyle('right') }}
+        onMouseDown={(e) => handleResizeStart('right', e)}
+      />
+      
+      {/* Corners */}
+      <div 
+        className="resize-handle absolute top-0 left-0 w-2 h-2 z-20"
+        style={{ cursor: getCursorStyle('top-left') }}
+        onMouseDown={(e) => handleResizeStart('top-left', e)}
+      />
+      
+      <div 
+        className="resize-handle absolute top-0 right-0 w-2 h-2 z-20"
+        style={{ cursor: getCursorStyle('top-right') }}
+        onMouseDown={(e) => handleResizeStart('top-right', e)}
+      />
+      
+      <div 
+        className="resize-handle absolute bottom-0 left-0 w-2 h-2 z-20"
+        style={{ cursor: getCursorStyle('bottom-left') }}
+        onMouseDown={(e) => handleResizeStart('bottom-left', e)}
+      />
+      
+      <div 
+        className="resize-handle absolute bottom-0 right-0 w-2 h-2 z-20"
+        style={{ cursor: getCursorStyle('bottom-right') }}
+        onMouseDown={(e) => handleResizeStart('bottom-right', e)}
+      />
+
       {/* Title Bar */}
       <div 
         className={`text-white p-1 font-bold flex justify-between items-center text-xs cursor-move ${
@@ -291,7 +415,6 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
 const ExplorerContent = () => (
   <MyComputerApp />
 );
-
 
 const RecycleBinContent = () => (
   <div className="text-center py-8">
