@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import MyComputerApp from './window/my-computer.jsx';
+
 
 // Desktop Component
 const Desktop = () => {
@@ -286,25 +288,10 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
   );
 };
 
-// Window Content Components
 const ExplorerContent = () => (
-  <div className="h-full">
-    <div className="flex gap-4 mb-4">
-      <div className="flex flex-col items-center cursor-pointer p-2 hover:bg-blue-100">
-        <div className="text-2xl">💾</div>
-        <div className="text-xs">3½ Floppy (A:)</div>
-      </div>
-      <div className="flex flex-col items-center cursor-pointer p-2 hover:bg-blue-100">
-        <div className="text-2xl">💿</div>
-        <div className="text-xs">CD-ROM (D:)</div>
-      </div>
-      <div className="flex flex-col items-center cursor-pointer p-2 hover:bg-blue-100">
-        <div className="text-2xl">🖥️</div>
-        <div className="text-xs">Hard Disk (C:)</div>
-      </div>
-    </div>
-  </div>
+  <MyComputerApp />
 );
+
 
 const RecycleBinContent = () => (
   <div className="text-center py-8">
