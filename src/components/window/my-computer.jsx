@@ -141,7 +141,7 @@ const MyComputerApp = () => {
       <div className="flex-1 overflow-auto">
         {currentView === 'drives' ? (
           <DrivesView 
-            drives={drives} 
+            drives={getCurrentItems()} 
             selectedItem={selectedItem}
             onItemClick={setSelectedItem}
             onItemDoubleClick={handleItemDoubleClick}
