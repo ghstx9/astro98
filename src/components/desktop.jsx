@@ -56,7 +56,7 @@ const Desktop = () => {
     <div 
       className="w-full h-full relative"
       style={{
-        
+        backgroundImage: 'url("public/wallpaper/wallpaper.png")', // Replace with your wallpaper path
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
