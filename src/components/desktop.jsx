@@ -5,6 +5,7 @@ const Desktop = () => {
   const [windows, setWindows] = useState([]);
   const [nextId, setNextId] = useState(1);
   const [activeWindow, setActiveWindow] = useState(null);
+  const [selectedIcon, setSelectedIcon] = useState(null);
 
   const openWindow = (type, title) => {
     const newWindow = {
@@ -52,37 +53,57 @@ const Desktop = () => {
     setActiveWindow(id);
   };
 
+  const handleDesktopClick = (e) => {
+    // Clear icon selection when clicking on empty desktop area
+    if (e.target === e.currentTarget) {
+      setSelectedIcon(null);
+    }
+  };
+
   return (
     <div 
       className="w-full h-full relative"
       style={{
-        backgroundImage: 'url("public/wallpaper/wallpaper.png")', // Replace with your wallpaper path
+        backgroundImage: 'url("wallpaper/wallpaper.png")', 
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundColor: '#008080' // Fallback teal color
       }}
+      onClick={handleDesktopClick}
     >
       {/* Desktop Icons */}
       <div className="absolute top-4 left-4 space-y-4">
         <DesktopIcon 
           iconSrc="/icons/my-computer.png" 
           label="My Computer" 
+          id="my-computer"
+          selected={selectedIcon === "my-computer"}
+          onSelect={() => setSelectedIcon("my-computer")}
           onDoubleClick={() => openWindow('explorer', 'My Computer')}
         />
         <DesktopIcon 
           iconSrc="/icons/my-documents.png" 
           label="My Documents" 
+          id="my-documents"
+          selected={selectedIcon === "my-documents"}
+          onSelect={() => setSelectedIcon("my-documents")}
           onDoubleClick={() => openWindow('explorer', 'My Documents')}
         />
         <DesktopIcon 
           iconSrc="/icons/recycle-bin.png" 
           label="Recycle Bin" 
+          id="recycle-bin"
+          selected={selectedIcon === "recycle-bin"}
+          onSelect={() => setSelectedIcon("recycle-bin")}
           onDoubleClick={() => openWindow('recycle', 'Recycle Bin')}
         />
         <DesktopIcon 
           iconSrc="/icons/solitaire.png" 
           label="Solitaire" 
+          id="solitaire"
+          selected={selectedIcon === "solitaire"}
+          onSelect={() => setSelectedIcon("solitaire")}
           onDoubleClick={() => openWindow('solitaire', 'Solitaire')}
         />
       </div>
@@ -110,8 +131,11 @@ const Desktop = () => {
 };
 
 // Desktop Icon Component
-const DesktopIcon = ({ iconSrc, label, onDoubleClick }) => {
-  const [selected, setSelected] = useState(false);
+const DesktopIcon = ({ iconSrc, label, id, selected, onSelect, onDoubleClick }) => {
+  const handleClick = (e) => {
+    e.stopPropagation(); // Prevent desktop click handler from firing
+    onSelect();
+  };
 
   return (
     <div 
@@ -121,7 +145,7 @@ const DesktopIcon = ({ iconSrc, label, onDoubleClick }) => {
       style={{
         textShadow: '1px 1px 2px rgba(0,0,0,0.8)' // Add text shadow for better readability
       }}
-      onClick={() => setSelected(!selected)}
+      onClick={handleClick}
       onDoubleClick={onDoubleClick}
     >
       <img 
