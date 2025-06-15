@@ -28,7 +28,13 @@ const Taskbar = () => {
         }}
         onClick={() => setStartMenuOpen(!startMenuOpen)}
       >
-        <span className="text-sm">🪟</span>
+        <img 
+          src="/icons/winicon.png" 
+          alt="Windows"
+          className="w-4 h-4"
+          style={{ imageRendering: 'pixelated' }}
+          draggable={false}
+        />
         <span>Start</span>
       </button>
 
