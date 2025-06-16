@@ -12,8 +12,8 @@ const MyComputerApp = () => {
       name: '3½ Floppy (A:)',
       icon: <img src="/icons/floppydrive.png" alt="A:" className="w-8 h-8 inline" />,
       type: 'floppy',
-      size: '1.44 MB',
-      free: '1.44 MB',
+      size: '0 MB',
+      free: '0 MB',
       accessible: false
     },
     {
@@ -30,7 +30,7 @@ const MyComputerApp = () => {
       name: 'CD-ROM (D:)',
       icon: <img src="icons/cdrom.png" alt="D:" className="w-8 h-8 inline" />,
       type: 'cdrom',
-      size: '650 MB',
+      size: '0 MB',
       free: '0 MB',
       accessible: false
     }
@@ -38,10 +38,10 @@ const MyComputerApp = () => {
 
   const folders = {
     'C:': [
-      { name: 'Windows', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Temp" className="w-4 h-4 inline" />, size: '', modified: '25/10/1998' },
+      { name: 'Windows', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '25/10/1998' },
       { name: 'Program Files', type: 'folder', icon: <img src="/icons/typefolder.png" alt="PF" className="w-4 h-4 inline" />, size: '', modified: '15/11/1998' },
-      { name: 'My Documents', type: 'folder', icon: '📂', size: '', modified: '01/12/1998' },
-      { name: 'Temp', type: 'folder', icon: '📁', size: '', modified: '10/12/1998' },
+      { name: 'My Documents', type: 'folder', icon: <img src="/icons/typefolderopen.png" alt="MyDc" className="w-4 h-4 inline" />, size: '', modified: '01/12/1998' },
+      { name: 'Temp', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Temp" className="w-4 h-4 inline" />, size: '', modified: '10/12/1998' },
       { name: 'autoexec.bat', type: 'file', icon: '📄', size: '1 KB', modified: '25/10/1998' },
       { name: 'config.sys', type: 'file', icon: '📄', size: '2 KB', modified: '25/10/1998' }
     ],
