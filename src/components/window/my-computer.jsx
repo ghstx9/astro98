@@ -38,7 +38,7 @@ const MyComputerApp = () => {
 
   const folders = {
     'C:': [
-      { name: 'Windows', type: 'folder', icon: '📁', size: '', modified: '25/10/1998' },
+      { name: 'Windows', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Temp" className="w-4 h-4 inline" />, size: '', modified: '25/10/1998' },
       { name: 'Program Files', type: 'folder', icon: '📁', size: '', modified: '15/11/1998' },
       { name: 'My Documents', type: 'folder', icon: '📂', size: '', modified: '01/12/1998' },
       { name: 'Temp', type: 'folder', icon: '📁', size: '', modified: '10/12/1998' },
