@@ -19,7 +19,7 @@ const MyComputerApp = () => {
     {
       id: 'hard-disk',
       name: 'Hard Disk (C:)',
-      icon: '🖥️',
+      icon: <img src="/icons/C.png" alt="C:" className="w-8 h-8 inline" />, // Changed to image icon
       type: 'hard-disk',
       size: '2.1 GB',
       free: '1.2 GB',
@@ -48,7 +48,6 @@ const MyComputerApp = () => {
     'C:/Windows': [
       { name: 'System', type: 'folder', icon: '📁', size: '', modified: '25/10/1998' },
       { name: 'System32', type: 'folder', icon: '📁', size: '', modified: '25/10/1998' },
-      { name: 'Desktop', type: 'folder', icon: '📁', size: '', modified: '01/12/1998' },
       { name: 'notepad.exe', type: 'file', icon: '📝', size: '48 KB', modified: '25/10/1998' },
       { name: 'calc.exe', type: 'file', icon: '🧮', size: '32 KB', modified: '25/10/1998' }
     ],
@@ -93,7 +92,7 @@ const MyComputerApp = () => {
         setInMyDocuments(false);
       }
     } else if (item.type === 'drive' && !item.accessible) {
-      alert(`${item.name} is not accessible. (yet)`);
+      alert(`${item.name} is not accessible buddy, sorry :(`);
     }
   };
 
