@@ -10,7 +10,7 @@ const MyComputerApp = () => {
     {
       id: 'floppy',
       name: '3½ Floppy (A:)',
-      icon: '💾',
+      icon: <img src="/icons/floppydrive.png" alt="A:" className="w-8 h-8 inline" />,
       type: 'floppy',
       size: '1.44 MB',
       free: '1.44 MB',
