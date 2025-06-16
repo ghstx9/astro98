@@ -52,6 +52,14 @@ const MyComputerApp = () => {
       { name: 'notepad.exe', type: 'file', icon: '📝', size: '48 KB', modified: '25/10/1998' },
       { name: 'calc.exe', type: 'file', icon: '🧮', size: '32 KB', modified: '25/10/1998' }
     ],
+    'C:/Windows/System': [
+      { name: 'Speech', type: 'folder', icon: '📁', size: '', modified: '25/10/1998' }
+    ],
+    'C:/Windows/System/Speech': [
+      { name: 'speech-synthesis.xsd', type: 'file', icon: '🔊', size: '4 KB', modified: '25/10/1998' },
+      { name: 'synthesis-core.xsd', type: 'file', icon: '🔊', size: '17 KB', modified: '25/10/1998' },
+      { name: 'xml.xsd', type: 'file', icon: '📄', size: '2 KB', modified: '25/10/1998' }
+    ],
     'C:/Windows/System32': [
       { name: 'what', type: 'file', icon: '🥴', size: '69 KB', modified: '18/08/1945' },
       { name: 'do', type: 'file', icon: '🤏', size: '420 KB', modified: '18/08/1945' },
@@ -85,7 +93,7 @@ const MyComputerApp = () => {
         setInMyDocuments(false);
       }
     } else if (item.type === 'drive' && !item.accessible) {
-      alert(`${item.name} is not accessible. Please insert a disk.`);
+      alert(`${item.name} is not accessible. (yet)`);
     }
   };
 
