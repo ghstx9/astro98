@@ -42,8 +42,8 @@ const MyComputerApp = () => {
       { name: 'Program Files', type: 'folder', icon: <img src="/icons/typefolder.png" alt="PF" className="w-4 h-4 inline" />, size: '', modified: '15/11/1998' },
       { name: 'My Documents', type: 'folder', icon: <img src="/icons/typefolderopen.png" alt="MyDc" className="w-4 h-4 inline" />, size: '', modified: '01/12/1998' },
       { name: 'Temp', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Temp" className="w-4 h-4 inline" />, size: '', modified: '10/12/1998' },
-      { name: 'autoexec.bat', type: 'file', icon: '📄', size: '1 KB', modified: '25/10/1998' },
-      { name: 'config.sys', type: 'file', icon: '📄', size: '2 KB', modified: '25/10/1998' }
+      { name: 'autoexec.bat', type: 'file', icon: <img src="/icons/notepad16.png" alt="autoexec" className="w-4 h-4 inline" />, size: '1 KB', modified: '25/10/1998' },
+      { name: 'config.sys', type: 'file', icon: <img src="/icons/notepad16.png" alt="config" className="w-4 h-4 inline" />, size: '2 KB', modified: '25/10/1998' }
     ],
     'C:/Windows': [
       { name: 'System', type: 'folder', icon: '📁', size: '', modified: '25/10/1998' },
