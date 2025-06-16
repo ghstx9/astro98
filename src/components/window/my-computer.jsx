@@ -19,7 +19,7 @@ const MyComputerApp = () => {
     {
       id: 'hard-disk',
       name: 'Hard Disk (C:)',
-      icon: <img src="/icons/C.png" alt="C:" className="w-8 h-8 inline" />, // Changed to image icon
+      icon: <img src="/icons/C.png" alt="C:" className="w-8 h-8 inline" />, 
       type: 'hard-disk',
       size: '2.1 GB',
       free: '1.2 GB',
@@ -28,7 +28,7 @@ const MyComputerApp = () => {
     {
       id: 'cdrom',
       name: 'CD-ROM (D:)',
-      icon: '💿',
+      icon: <img src="icons/cdrom.png" alt="D:" className="w-8 h-8 inline" />,
       type: 'cdrom',
       size: '650 MB',
       free: '0 MB',
