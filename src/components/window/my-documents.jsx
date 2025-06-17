@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
-const MyDocumentsApp = () => {
+const MyDocumentsApp = ({ onOpenDocument }) => {
   const [currentPath, setCurrentPath] = useState('My Documents');
   const [selectedItem, setSelectedItem] = useState(null);
-  const [windows, setWindows] = useState([]); 
 
   const documentStructure = {
     'My Documents': [
@@ -49,39 +48,37 @@ const MyDocumentsApp = () => {
       }
     } else if (item.type === 'file') {
       const fileType = item.name.split('.').pop().toLowerCase();
+
+      if (fileType === 'doc') {
+        if (onOpenDocument) {
+          onOpenDocument(item.name); 
+        } else {
+          alert(`Opening ${item.name} in Microsoft Word...`);
+        }
+        return; 
+      }
+
       let message = `Opening ${item.name}...`;
 
       switch (fileType) {
-        case 'doc':
-          const newWindow = {
-            id: Date.now(),
-            type: 'word',
-            title: `Microsoft Word - ${item.name}`,
-            fileName: item.name,
-          };
-          setWindows((prev) => [...prev, newWindow]);
-          break;
         case 'txt':
-          message = `Can't open ${item.name} in Notepad...`;
-          alert(message);
+          message = `Opening ${item.name} in Notepad...`;
           break;
         case 'bmp':
         case 'jpg':
           message = `Opening ${item.name} in Paint...`;
-          alert(message);
           break;
         case 'wav':
           message = `Playing ${item.name} in Media Player...`;
-          alert(message);
           break;
         case 'exe':
           message = `Running ${item.name}...`;
-          alert(message);
           break;
         default:
           message = `Opening ${item.name}...`;
-          alert(message);
       }
+
+      alert(message);
     }
   };
 
@@ -127,7 +124,7 @@ const MyDocumentsApp = () => {
     const items = getCurrentItems();
     const fileCount = items.filter(item => item.type === 'file').length;
     const folderCount = items.filter(item => item.type === 'folder').length;
-    
+
     if (fileCount > 0 && folderCount > 0) {
       return `${folderCount} folder(s), ${fileCount} file(s)`;
     } else if (folderCount > 0) {
@@ -184,7 +181,7 @@ const MyDocumentsApp = () => {
           items={getCurrentItems()}
           selectedItem={selectedItem}
           onItemClick={setSelectedItem}
-          onItemDoubleClick={handleItemDoubleClick}
+          onItemDoubleClick={handleItemDoubleClick} 
           getFileTypeDescription={getFileTypeDescription}
         />
       </div>

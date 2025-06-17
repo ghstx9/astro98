@@ -62,6 +62,24 @@ const Desktop = () => {
     }
   };
 
+  const openDocument = (fileName) => {
+    const newWindow = {
+      id: nextId,
+      type: 'word',
+      title: `Microsoft Word - ${fileName}`,
+      fileName: fileName,
+      x: 120 + (nextId * 30),
+      y: 120 + (nextId * 30),
+      width: 700,
+      height: 500,
+      minimized: false,
+      maximized: false
+    };
+    setWindows([...windows, newWindow]);
+    setActiveWindow(nextId);
+    setNextId(nextId + 1);
+  };
+
   return (
     <div 
       className="w-full h-full relative"
@@ -125,6 +143,7 @@ const Desktop = () => {
                 w.id === window.id ? { ...w, ...updates } : w
               ));
             }}
+            openDocument={openDocument} 
           />
         )
       ))}
@@ -166,7 +185,7 @@ const DesktopIcon = ({ iconSrc, label, id, selected, onSelect, onDoubleClick }) 
 };
 
 
-const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdate }) => {
+const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdate, openDocument }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [isResizing, setIsResizing] = useState(false);
@@ -272,12 +291,13 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
           title={window.title} 
           window={window}
           onUpdate={onUpdate}
+          onOpenDocument={openDocument} 
         />; 
       case 'recycle':
         return <RecycleBinApp />;
       case 'solitaire':
         return <SolitaireContent />;
-      case 'doc-viewer':
+      case 'word': 
         return <WordDocViewer fileName={window.fileName} />;
       default:
         return <DefaultContent />;
@@ -426,9 +446,9 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
   );
 };
 
-const ExplorerContent = ({ title, window, onUpdate }) => {
+const ExplorerContent = ({ title, window, onUpdate, onOpenDocument }) => {
   if (title === 'My Documents') {
-    return <MyDocumentsApp />;
+    return <MyDocumentsApp onOpenDocument={onOpenDocument} />;
   }
   return <MyComputerApp onNavigateToMyDocuments={() => {
     onUpdate({ title: 'My Documents' });
