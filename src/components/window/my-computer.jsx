@@ -48,7 +48,7 @@ const MyComputerApp = () => {
     'C:/Windows': [
       { name: 'System', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Sys" className="w-4 h-4 inline" />, size: '', modified: '25/10/1998' },
       { name: 'System32', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Sys32" className="w-4 h-4 inline" />, size: '', modified: '25/10/1998' },
-      { name: 'notepad.exe', type: 'file', icon: '📝', size: '48 KB', modified: '25/10/1998' },
+      { name: 'notepad.exe', type: 'file', icon: <img src="/icons/notepad16.png" alt="notepad" className="w-4 h-4 inline" />, size: '48 KB', modified: '25/10/1998' },
       { name: 'calc.exe', type: 'file', icon: '🧮', size: '32 KB', modified: '25/10/1998' }
     ],
     'C:/Windows/System': [
