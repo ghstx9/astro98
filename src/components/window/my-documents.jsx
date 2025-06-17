@@ -8,7 +8,6 @@ const MyDocumentsApp = () => {
     'My Documents': [
       { name: 'Personal', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '12/15/1998' },
       { name: 'Work', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '12/10/1998' },
-      { name: 'Pictures', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '12/08/1998' },
       { name: 'Music', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '12/05/1998' },
       { name: 'Letters', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '11/28/1998' },
       { name: 'Resume.doc', type: 'file', icon: <img src="/icons/docum.png" alt="Win" className="w-4 h-4 inline" />, size: '24 KB', modified: '12/14/1998' },
@@ -27,14 +26,6 @@ const MyDocumentsApp = () => {
       { name: 'Meeting Notes.doc', type: 'file', icon: <img src="/icons/docum.png" alt="Win" className="w-4 h-4 inline" />, size: '15 KB', modified: '12/10/1998' },
       { name: 'Web Ideas.txt', type: 'file', icon: <img src="/icons/notepadfile1.png" alt="config" className="w-4 h-4 inline" />, size: '145 KB', modified: '12/09/1998' }
     ],
-    'My Documents/Pictures': [
-      { name: 'Vacation 1998', type: 'folder', icon: '📁', size: '', modified: '08/15/1998' },
-      { name: 'Christmas 1997', type: 'folder', icon: '📁', size: '', modified: '12/25/1997' },
-      { name: 'Birthday Party', type: 'folder', icon: '📁', size: '', modified: '06/10/1998' },
-      { name: 'Sunset.bmp', type: 'file', icon: '🖼️', size: '248 KB', modified: '09/22/1998' },
-      { name: 'Family Portrait.jpg', type: 'file', icon: '🖼️', size: '156 KB', modified: '11/20/1998' },
-      { name: 'Garden.bmp', type: 'file', icon: '🖼️', size: '312 KB', modified: '07/14/1998' }
-    ],
     'My Documents/Music': [
       { name: 'Classical', type: 'folder', icon: '📁', size: '', modified: '10/15/1998' },
       { name: 'Rock', type: 'folder', icon: '📁', size: '', modified: '11/20/1998' },
@@ -43,10 +34,9 @@ const MyDocumentsApp = () => {
       { name: 'Nature Sounds.wav', type: 'file', icon: '🎵', size: '3.2 MB', modified: '10/30/1998' }
     ],
     'My Documents/Letters': [
-      { name: 'Thank You Notes', type: 'folder', icon: '📁', size: '', modified: '11/15/1998' },
-      { name: 'Complaint Letter.doc', type: 'file', icon: '📄', size: '6 KB', modified: '11/28/1998' },
-      { name: 'Job Application.doc', type: 'file', icon: '📄', size: '14 KB', modified: '11/20/1998' },
-      { name: 'Insurance Claim.doc', type: 'file', icon: '📄', size: '9 KB', modified: '11/10/1998' }
+      { name: 'Complaint Letter.doc', type: 'file', icon: <img src="/icons/docum.png" alt="Win" className="w-4 h-4 inline" />, size: '6 KB', modified: '11/28/1998' },
+      { name: 'Job Application.doc', type: 'file', icon: <img src="/icons/docum.png" alt="Win" className="w-4 h-4 inline" />, size: '14 KB', modified: '11/20/1998' },
+      { name: 'Insurance Claim.doc', type: 'file', icon: <img src="/icons/docum.png" alt="Win" className="w-4 h-4 inline" />, size: '9 KB', modified: '11/10/1998' }
     ]
   };
 
