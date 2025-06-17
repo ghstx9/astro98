@@ -20,7 +20,7 @@ const MyDocumentsApp = () => {
       { name: 'Diary', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '11/15/1998' },
       { name: 'Recipes', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '10/20/1998' },
       { name: 'Birthday List.doc', type: 'file', icon: <img src="/icons/docum.png" alt="Win" className="w-4 h-4 inline" />, size: '8 KB', modified: '11/30/1998' },
-      { name: 'Phone Numbers.txt', type: 'file', icon: '📝', size: '3 KB', modified: '12/10/1998' },
+      { name: 'Phone Numbers.txt', type: 'file', icon: <img src="/icons/notepad16.png" alt="config" className="w-4 h-4 inline" />, size: '3 KB', modified: '12/10/1998' },
       { name: 'Vacation Plans.doc', type: 'file', icon: '📄', size: '12 KB', modified: '12/05/1998' }
     ],
     'My Documents/Work': [
