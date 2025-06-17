@@ -67,10 +67,17 @@ const MyComputerApp = () => {
       { name: 'here', type: 'file', icon: '👀', size: '69 KB', modified: '18/08/1945' }
     ],
     'C:/Program Files': [
-      { name: 'Accessories', type: 'folder', icon: '📁', size: '', modified: '25/10/1998' },
+      { name: 'Accessories', type: 'folder', icon: <img src="icons/typefolder.png" alt="access" className="w-4 h-4 inline" />, size: '', modified: '25/10/1998' },
       { name: 'Games', type: 'folder', icon: '📁', size: '', modified: '01/11/1998' },
       { name: 'Internet Explorer', type: 'folder', icon: '📁', size: '', modified: '25/10/1998' }
+    ],
+    'C:/Program Files/Accessories': [
+      { name: 'test', type: 'file', icon: <img src="/icons/cdrom.png" alt="cdcd" className="w-4 h-4 inline" />, size: '1 KB', modified: '25/10/1998' },
+    ],
+    'C:/Program Files/Games': [
+      { name: 'Solitaire', type: 'file', icon: <img src="/icons/solitaire.png" alt="solitaire" className="w-4 h-4 inline" />, size: '500 KB', modified: '25/10/1998'},
     ]
+
   };
 
   const [inMyDocuments, setInMyDocuments] = useState(false);
