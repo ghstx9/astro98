@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const MyDocumentsApp = () => {
   const [currentPath, setCurrentPath] = useState('My Documents');
   const [selectedItem, setSelectedItem] = useState(null);
+  const [windows, setWindows] = useState([]); 
 
   const documentStructure = {
     'My Documents': [
@@ -49,28 +50,38 @@ const MyDocumentsApp = () => {
     } else if (item.type === 'file') {
       const fileType = item.name.split('.').pop().toLowerCase();
       let message = `Opening ${item.name}...`;
-      
+
       switch (fileType) {
         case 'doc':
-          message = `Can't open ${item.name} in Microsoft Word...`;
+          const newWindow = {
+            id: Date.now(),
+            type: 'word',
+            title: `Microsoft Word - ${item.name}`,
+            fileName: item.name,
+          };
+          setWindows((prev) => [...prev, newWindow]);
           break;
         case 'txt':
           message = `Can't open ${item.name} in Notepad...`;
+          alert(message);
           break;
         case 'bmp':
         case 'jpg':
           message = `Opening ${item.name} in Paint...`;
+          alert(message);
           break;
         case 'wav':
           message = `Playing ${item.name} in Media Player...`;
+          alert(message);
           break;
         case 'exe':
           message = `Running ${item.name}...`;
+          alert(message);
+          break;
         default:
           message = `Opening ${item.name}...`;
+          alert(message);
       }
-      
-      alert(message);
     }
   };
 

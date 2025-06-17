@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import MyComputerApp from './window/my-computer.jsx';
 import MyDocumentsApp from './window/my-documents.jsx'; 
 import RecycleBinApp from './window/recycle-bin.jsx';
+import WordDocViewer from './window/doc-viewer.jsx';
 
 const Desktop = () => {
   const [windows, setWindows] = useState([]);
@@ -276,6 +277,8 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
         return <RecycleBinApp />;
       case 'solitaire':
         return <SolitaireContent />;
+      case 'doc-viewer':
+        return <WordDocViewer fileName={window.fileName} />;
       default:
         return <DefaultContent />;
     }
