@@ -69,7 +69,7 @@ const MyComputerApp = ({ onNavigateToMyDocuments }) => {
     'C:/Program Files': [
       { name: 'Accessories', type: 'folder', icon: <img src="icons/typefolder.png" alt="access" className="w-4 h-4 inline" />, size: '', modified: '25/10/1998' },
       { name: 'Games', type: 'folder', icon: <img src="icons/typefolder.png" alt="games" className="w-4 h-4 inline" />, size: '', modified: '01/11/1998' },
-      { name: 'Internet Explorer', type: 'folder', icon: '📁', size: '', modified: '25/10/1998' }
+      { name: 'InternetExplorer.exe', type: 'file', icon: <img src="icons/ie16.png" alt="ie" className="w-4 h-4 inline" />, size: '', modified: '25/10/1998' }
     ],
     'C:/Program Files/Accessories': [
       { name: 'test', type: 'file', icon: <img src="/icons/cdrom.png" alt="cdcd" className="w-4 h-4 inline" />, size: '1 KB', modified: '25/10/1998' },
