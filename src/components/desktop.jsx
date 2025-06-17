@@ -377,6 +377,8 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
             <img src="/icons/my-documents.png" alt="My Documents" className="w-4 h-4 inline" />
           ) : window.title === "Recycle Bin" ? (
             <img src="/icons/recycle-bin.png" alt="Recycle Bin" className="w-4 h-4 inline" />
+          ) : window.title === "Solitaire" ? (
+            <img src="/icons/solitaire.png" alt="Solitaire" className="w-4 h-4 inline" />
           ) : (
             <img src="/icons/my-computer.png" alt="My Computer" className="w-4 h-4 inline" />
           )}
