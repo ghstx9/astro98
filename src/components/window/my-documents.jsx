@@ -6,48 +6,48 @@ const MyDocumentsApp = () => {
 
   const documentStructure = {
     'My Documents': [
-      { name: 'Personal', type: 'folder', icon: '📁', size: '', modified: '12/15/1998', items: 15 },
-      { name: 'Work', type: 'folder', icon: '📁', size: '', modified: '12/10/1998', items: 8 },
-      { name: 'Pictures', type: 'folder', icon: '📁', size: '', modified: '12/08/1998', items: 12 },
-      { name: 'Music', type: 'folder', icon: '📁', size: '', modified: '12/05/1998', items: 6 },
-      { name: 'Letters', type: 'folder', icon: '📁', size: '', modified: '11/28/1998', items: 4 },
-      { name: 'Resume.doc', type: 'file', icon: '📄', size: '24 KB', modified: '12/14/1998' },
-      { name: 'Budget.xls', type: 'file', icon: '📊', size: '18 KB', modified: '12/12/1998' },
-      { name: 'Shopping List.txt', type: 'file', icon: '📝', size: '2 KB', modified: '12/16/1998' }
+      { name: 'Personal', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '12/15/1998' },
+      { name: 'Work', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '12/10/1998' },
+      { name: 'Pictures', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '12/08/1998' },
+      { name: 'Music', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '12/05/1998' },
+      { name: 'Letters', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '11/28/1998' },
+      { name: 'Resume.doc', type: 'file', icon: <img src="/icons/docum.png" alt="Win" className="w-4 h-4 inline" />, size: '24 KB', modified: '12/14/1998' },
+      { name: 'Netscape.exe', type: 'file', icon: <img src="/icons/installer.png" alt="exe" className="w-4 h-4 inline" />, size: '8.2 MB', modified: '12/12/1998' },
+      { name: 'Shopping List.txt', type: 'file', icon: <img src="/icons/notepad16.png" alt="config" className="w-4 h-4 inline" />, size: '2 KB', modified: '12/16/1998' }
     ],
     'My Documents/Personal': [
-      { name: 'Family Photos', type: 'folder', icon: '📁', size: '', modified: '12/01/1998', items: 25 },
-      { name: 'Diary', type: 'folder', icon: '📁', size: '', modified: '11/15/1998', items: 12 },
-      { name: 'Recipes', type: 'folder', icon: '📁', size: '', modified: '10/20/1998', items: 18 },
+      { name: 'Family Photos', type: 'folder', icon: '📁', size: '', modified: '12/01/1998' },
+      { name: 'Diary', type: 'folder', icon: '📁', size: '', modified: '11/15/1998' },
+      { name: 'Recipes', type: 'folder', icon: '📁', size: '', modified: '10/20/1998' },
       { name: 'Birthday List.doc', type: 'file', icon: '📄', size: '8 KB', modified: '11/30/1998' },
       { name: 'Phone Numbers.txt', type: 'file', icon: '📝', size: '3 KB', modified: '12/10/1998' },
       { name: 'Vacation Plans.doc', type: 'file', icon: '📄', size: '12 KB', modified: '12/05/1998' }
     ],
     'My Documents/Work': [
-      { name: 'Projects', type: 'folder', icon: '📁', size: '', modified: '12/08/1998', items: 6 },
-      { name: 'Reports', type: 'folder', icon: '📁', size: '', modified: '12/06/1998', items: 9 },
+      { name: 'Projects', type: 'folder', icon: '📁', size: '', modified: '12/08/1998' },
+      { name: 'Reports', type: 'folder', icon: '📁', size: '', modified: '12/06/1998' },
       { name: 'Meeting Notes.doc', type: 'file', icon: '📄', size: '15 KB', modified: '12/10/1998' },
       { name: 'Presentation.ppt', type: 'file', icon: '📊', size: '145 KB', modified: '12/09/1998' },
       { name: 'Client List.xls', type: 'file', icon: '📊', size: '22 KB', modified: '12/07/1998' },
       { name: 'Timesheet.xls', type: 'file', icon: '📊', size: '16 KB', modified: '12/11/1998' }
     ],
     'My Documents/Pictures': [
-      { name: 'Vacation 1998', type: 'folder', icon: '📁', size: '', modified: '08/15/1998', items: 24 },
-      { name: 'Christmas 1997', type: 'folder', icon: '📁', size: '', modified: '12/25/1997', items: 18 },
-      { name: 'Birthday Party', type: 'folder', icon: '📁', size: '', modified: '06/10/1998', items: 12 },
+      { name: 'Vacation 1998', type: 'folder', icon: '📁', size: '', modified: '08/15/1998' },
+      { name: 'Christmas 1997', type: 'folder', icon: '📁', size: '', modified: '12/25/1997' },
+      { name: 'Birthday Party', type: 'folder', icon: '📁', size: '', modified: '06/10/1998' },
       { name: 'Sunset.bmp', type: 'file', icon: '🖼️', size: '248 KB', modified: '09/22/1998' },
       { name: 'Family Portrait.jpg', type: 'file', icon: '🖼️', size: '156 KB', modified: '11/20/1998' },
       { name: 'Garden.bmp', type: 'file', icon: '🖼️', size: '312 KB', modified: '07/14/1998' }
     ],
     'My Documents/Music': [
-      { name: 'Classical', type: 'folder', icon: '📁', size: '', modified: '10/15/1998', items: 8 },
-      { name: 'Rock', type: 'folder', icon: '📁', size: '', modified: '11/20/1998', items: 12 },
+      { name: 'Classical', type: 'folder', icon: '📁', size: '', modified: '10/15/1998' },
+      { name: 'Rock', type: 'folder', icon: '📁', size: '', modified: '11/20/1998' },
       { name: 'My Song.wav', type: 'file', icon: '🎵', size: '2.4 MB', modified: '12/01/1998' },
       { name: 'Piano Recording.wav', type: 'file', icon: '🎵', size: '1.8 MB', modified: '11/25/1998' },
       { name: 'Nature Sounds.wav', type: 'file', icon: '🎵', size: '3.2 MB', modified: '10/30/1998' }
     ],
     'My Documents/Letters': [
-      { name: 'Thank You Notes', type: 'folder', icon: '📁', size: '', modified: '11/15/1998', items: 3 },
+      { name: 'Thank You Notes', type: 'folder', icon: '📁', size: '', modified: '11/15/1998' },
       { name: 'Complaint Letter.doc', type: 'file', icon: '📄', size: '6 KB', modified: '11/28/1998' },
       { name: 'Job Application.doc', type: 'file', icon: '📄', size: '14 KB', modified: '11/20/1998' },
       { name: 'Insurance Claim.doc', type: 'file', icon: '📄', size: '9 KB', modified: '11/10/1998' }
@@ -66,16 +66,10 @@ const MyDocumentsApp = () => {
       
       switch (fileType) {
         case 'doc':
-          message = `Opening ${item.name} in Microsoft Word...`;
-          break;
-        case 'xls':
-          message = `Opening ${item.name} in Microsoft Excel...`;
+          message = `Can't open ${item.name} in Microsoft Word...`;
           break;
         case 'txt':
-          message = `Opening ${item.name} in Notepad...`;
-          break;
-        case 'ppt':
-          message = `Opening ${item.name} in PowerPoint...`;
+          message = `Can't open ${item.name} in Notepad...`;
           break;
         case 'bmp':
         case 'jpg':
@@ -84,6 +78,8 @@ const MyDocumentsApp = () => {
         case 'wav':
           message = `Playing ${item.name} in Media Player...`;
           break;
+        case 'exe':
+          message = `Running ${item.name}...`;
         default:
           message = `Opening ${item.name}...`;
       }
@@ -112,25 +108,19 @@ const MyDocumentsApp = () => {
 
   const getFileTypeDescription = (item) => {
     if (item.type === 'folder') {
-      return `File Folder (${item.items} items)`;
+      return 'File Folder';
     }
-    
+
     const extension = item.name.split('.').pop().toLowerCase();
     switch (extension) {
       case 'doc':
-        return 'Microsoft Word Document';
-      case 'xls':
-        return 'Microsoft Excel Worksheet';
+        return 'Word Document';
       case 'txt':
         return 'Text Document';
-      case 'ppt':
-        return 'PowerPoint Presentation';
-      case 'bmp':
-        return 'Bitmap Image';
-      case 'jpg':
-        return 'JPEG Image';
       case 'wav':
         return 'Wave Sound';
+      case 'exe':
+        return 'Executable File';
       default:
         return 'File';
     }
@@ -275,7 +265,7 @@ const DocumentView = ({ items, selectedItem, onItemClick, onItemDoubleClick, get
             {selectedItem.modified && (
               <div><strong>Modified:</strong> {selectedItem.modified}</div>
             )}
-            {selectedItem.type === 'folder' && selectedItem.items && (
+            {selectedItem && selectedItem.type === 'folder' && selectedItem.items && (
               <div><strong>Contains:</strong> {selectedItem.items} items</div>
             )}
           </div>

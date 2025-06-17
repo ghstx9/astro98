@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import MyComputerApp from './window/my-computer.jsx';
 import MyDocumentsApp from './window/my-documents.jsx'; 
+import RecycleBinApp from './window/recycle-bin.jsx';
 
 const Desktop = () => {
   const [windows, setWindows] = useState([]);
@@ -268,7 +269,7 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
       case 'explorer':
         return <ExplorerContent title={window.title} />; 
       case 'recycle':
-        return <RecycleBinContent />;
+        return <RecycleBinApp />;
       case 'solitaire':
         return <SolitaireContent />;
       default:
