@@ -13,7 +13,7 @@ const MyDocumentsApp = () => {
       { name: 'Letters', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '11/28/1998' },
       { name: 'Resume.doc', type: 'file', icon: <img src="/icons/docum.png" alt="Win" className="w-4 h-4 inline" />, size: '24 KB', modified: '12/14/1998' },
       { name: 'Netscape.exe', type: 'file', icon: <img src="/icons/installer.png" alt="exe" className="w-4 h-4 inline" />, size: '8.2 MB', modified: '12/12/1998' },
-      { name: 'Shopping List.txt', type: 'file', icon: <img src="/icons/notepad16.png" alt="config" className="w-4 h-4 inline" />, size: '2 KB', modified: '12/16/1998' }
+      { name: 'Shopping List.txt', type: 'file', icon: <img src="/icons/notepadfile1.png" alt="config" className="w-4 h-4 inline" />, size: '2 KB', modified: '12/16/1998' }
     ],
     'My Documents/Personal': [
       { name: 'Family Photos', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '12/01/1998' },
@@ -22,12 +22,10 @@ const MyDocumentsApp = () => {
       { name: 'Vacation Plans.doc', type: 'file', icon: <img src="/icons/docum.png" alt="Win" className="w-4 h-4 inline" />, size: '12 KB', modified: '12/05/1998' }
     ],
     'My Documents/Work': [
-      { name: 'Projects', type: 'folder', icon: '📁', size: '', modified: '12/08/1998' },
-      { name: 'Reports', type: 'folder', icon: '📁', size: '', modified: '12/06/1998' },
-      { name: 'Meeting Notes.doc', type: 'file', icon: '📄', size: '15 KB', modified: '12/10/1998' },
-      { name: 'Presentation.ppt', type: 'file', icon: '📊', size: '145 KB', modified: '12/09/1998' },
-      { name: 'Client List.xls', type: 'file', icon: '📊', size: '22 KB', modified: '12/07/1998' },
-      { name: 'Timesheet.xls', type: 'file', icon: '📊', size: '16 KB', modified: '12/11/1998' }
+      { name: 'Projects', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '12/08/1998' },
+      { name: 'Reports', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '12/06/1998' },
+      { name: 'Meeting Notes.doc', type: 'file', icon: <img src="/icons/docum.png" alt="Win" className="w-4 h-4 inline" />, size: '15 KB', modified: '12/10/1998' },
+      { name: 'Web Ideas.txt', type: 'file', icon: <img src="/icons/notepadfile1.png" alt="config" className="w-4 h-4 inline" />, size: '145 KB', modified: '12/09/1998' }
     ],
     'My Documents/Pictures': [
       { name: 'Vacation 1998', type: 'folder', icon: '📁', size: '', modified: '08/15/1998' },
