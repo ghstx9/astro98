@@ -267,7 +267,11 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
   const getWindowContent = () => {
     switch (window.type) {
       case 'explorer':
-        return <ExplorerContent title={window.title} />; 
+        return <ExplorerContent 
+          title={window.title} 
+          window={window}
+          onUpdate={onUpdate}
+        />; 
       case 'recycle':
         return <RecycleBinApp />;
       case 'solitaire':
@@ -419,11 +423,13 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
   );
 };
 
-const ExplorerContent = ({ title }) => {
+const ExplorerContent = ({ title, window, onUpdate }) => {
   if (title === 'My Documents') {
     return <MyDocumentsApp />;
   }
-  return <MyComputerApp />;
+  return <MyComputerApp onNavigateToMyDocuments={() => {
+    onUpdate({ title: 'My Documents' });
+  }} />;
 };
 
 const RecycleBinContent = () => (

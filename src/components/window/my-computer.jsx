@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MyDocumentsApp from './my-documents.jsx'; 
 
-const MyComputerApp = () => {
+const MyComputerApp = ({ onNavigateToMyDocuments }) => {
   const [currentView, setCurrentView] = useState('drives');
   const [currentPath, setCurrentPath] = useState('');
   const [selectedItem, setSelectedItem] = useState(null);
@@ -93,6 +93,9 @@ const MyComputerApp = () => {
         (currentPath === '' && item.name === 'My Documents')
       ) {
         setInMyDocuments(true);
+        if (onNavigateToMyDocuments) {
+          onNavigateToMyDocuments();
+        }
       } else {
         const newPath = currentPath ? `${currentPath}/${item.name}` : item.name;
         setCurrentPath(newPath);
