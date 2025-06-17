@@ -373,7 +373,7 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
         onMouseDown={handleMouseDown}
       >
         <span className="flex items-center gap-1">
-          <span>📄</span>
+          <img src="/icons/my-computer.png" alt="My Computer" className="w-4 h-4 inline" />
           {window.title}
         </span>
         <div className="window-controls flex gap-1">
