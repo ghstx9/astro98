@@ -27,11 +27,11 @@ const MyDocumentsApp = ({ onOpenDocument }) => {
       { name: 'Web Ideas.txt', type: 'file', icon: <img src="/icons/notepadfile1.png" alt="config" className="w-4 h-4 inline" />, size: '145 KB', modified: '12/09/1998' }
     ],
     'My Documents/Music': [
-      { name: 'Classical', type: 'folder', icon: '📁', size: '', modified: '10/15/1998' },
-      { name: 'Rock', type: 'folder', icon: '📁', size: '', modified: '11/20/1998' },
-      { name: 'My Song.wav', type: 'file', icon: '🎵', size: '2.4 MB', modified: '12/01/1998' },
-      { name: 'Piano Recording.wav', type: 'file', icon: '🎵', size: '1.8 MB', modified: '11/25/1998' },
-      { name: 'Nature Sounds.wav', type: 'file', icon: '🎵', size: '3.2 MB', modified: '10/30/1998' }
+      { name: 'Classical', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '10/15/1998' },
+      { name: 'Rock', type: 'folder', icon: <img src="/icons/typefolder.png" alt="Win" className="w-4 h-4 inline" />, size: '', modified: '11/20/1998' },
+      { name: 'My Song.wav', type: 'file', icon: <img src="/icons/midi.png" alt="Win" className="w-4 h-4 inline" />, size: '2.4 MB', modified: '12/01/1998' },
+      { name: 'Piano Recording.wav', type: 'file', icon: <img src="/icons/midi.png" alt="Win" className="w-4 h-4 inline" />, size: '1.8 MB', modified: '11/25/1998' },
+      { name: 'Nature Sounds.wav', type: 'file', icon: <img src="/icons/midi.png" alt="Win" className="w-4 h-4 inline" />, size: '3.2 MB', modified: '10/30/1998' }
     ],
     'My Documents/Letters': [
       { name: 'Complaint Letter.doc', type: 'file', icon: <img src="/icons/docum.png" alt="Win" className="w-4 h-4 inline" />, size: '6 KB', modified: '11/28/1998' },
