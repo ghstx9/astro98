@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const WordDocViewer = ({ fileName = "Document1.doc", onClose }) => {
   const [currentDocument, setCurrentDocument] = useState(fileName);
   const [zoomLevel, setZoomLevel] = useState(100);
+  const [selectedFont, setSelectedFont] = useState('Times New Roman');
 
   const getDocumentContent = (docName) => {
     const documents = {
@@ -121,6 +122,23 @@ This company despite being one of the most popular in the city is so fucking dis
     }
   };
 
+  const handleFontChange = (event) => {
+    setSelectedFont(event.target.value);
+  };
+
+  const getFontFamily = () => {
+    switch (selectedFont) {
+      case 'Times New Roman':
+        return 'Times New Roman, serif';
+      case 'Arial':
+        return 'Arial, sans-serif';
+      case 'Courier New':
+        return 'Courier New, monospace';
+      default:
+        return 'Times New Roman, serif';
+    }
+  };
+
   return (
     <div className="h-full flex flex-col bg-white">
       {/* Toolbar */}
@@ -179,14 +197,18 @@ This company despite being one of the most popular in the city is so fucking dis
       {/* Formatting toolbar */}
       <div className="bg-gray-200 border-b border-gray-400 p-1">
         <div className="flex items-center gap-1 text-xs">
-          <select className="px-2 py-1 bg-white border border-gray-600 text-xs">
-            <option>Times New Roman</option>
-            <option>Arial</option>
-            <option>Courier New</option>
+          <select 
+            className="px-2 py-1 bg-white border border-gray-600 text-xs"
+            value={selectedFont}
+            onChange={handleFontChange}
+          >
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Arial">Arial</option>
+            <option value="Courier New">Courier New</option>
           </select>
           <select className="px-2 py-1 bg-white border border-gray-600 text-xs">
-            <option>12</option>
             <option>10</option>
+            <option>12</option>
             <option>14</option>
             <option>16</option>
           </select>
@@ -213,7 +235,7 @@ This company despite being one of the most popular in the city is so fucking dis
             width: '8.5in',
             transform: `scale(${zoomLevel / 100})`, 
             transformOrigin: 'top center',           
-            fontFamily: 'Times New Roman, serif',
+            fontFamily: getFontFamily(),
             lineHeight: '1.5'
           }}
         >
