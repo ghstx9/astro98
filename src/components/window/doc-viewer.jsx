@@ -4,6 +4,7 @@ const WordDocViewer = ({ fileName = "Document1.doc", onClose }) => {
   const [currentDocument, setCurrentDocument] = useState(fileName);
   const [zoomLevel, setZoomLevel] = useState(100);
   const [selectedFont, setSelectedFont] = useState('Times New Roman');
+  const [fontSize, setFontSize] = useState(12);
 
   const getDocumentContent = (docName) => {
     const documents = {
@@ -126,6 +127,10 @@ This company despite being one of the most popular in the city is so fucking dis
     setSelectedFont(event.target.value);
   };
 
+  const handleFontSizeChange = (event) => {
+    setFontSize(parseInt(event.target.value));
+  };
+
   const getFontFamily = () => {
     switch (selectedFont) {
       case 'Times New Roman':
@@ -206,11 +211,24 @@ This company despite being one of the most popular in the city is so fucking dis
             <option value="Arial">Arial</option>
             <option value="Courier New">Courier New</option>
           </select>
-          <select className="px-2 py-1 bg-white border border-gray-600 text-xs">
-            <option>10</option>
-            <option>12</option>
-            <option>14</option>
-            <option>16</option>
+          <select 
+            className="px-2 py-1 bg-white border border-gray-600 text-xs"
+            value={fontSize}
+            onChange={handleFontSizeChange}
+          >
+            <option value={8}>8</option>
+            <option value={9}>9</option>
+            <option value={10}>10</option>
+            <option value={11}>11</option>
+            <option value={12}>12</option>
+            <option value={14}>14</option>
+            <option value={16}>16</option>
+            <option value={18}>18</option>
+            <option value={20}>20</option>
+            <option value={24}>24</option>
+            <option value={28}>28</option>
+            <option value={32}>32</option>
+            <option value={36}>36</option>
           </select>
           
           <div className="w-px h-6 bg-gray-400 mx-1"></div>
@@ -245,7 +263,7 @@ This company despite being one of the most popular in the city is so fucking dis
             </h1>
           </div>
           
-          <div className="whitespace-pre-line text-sm leading-relaxed">
+          <div className="whitespace-pre-line leading-relaxed" style={{ fontSize: `${fontSize}px` }}>
             {document.content}
           </div>
         </div>
