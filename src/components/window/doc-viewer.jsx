@@ -36,50 +36,15 @@ Available upon request
 FAMILY & FRIENDS BIRTHDAYS
 
 January
-• Mom - January 15th
-• Uncle Bob - January 28th
+• Bro - January 3, 1998
 
-February  
-• Sarah (sister) - February 12th
-• Coworker Mike - February 23rd
+February
+• Lil Bro - February 25, 1998
 
 March
-• Dad - March 8th
-• Best friend Lisa - March 17th
+• Me - March 18, 1998
 
-April
-• Neighbor Mrs. Johnson - April 3rd
-• Cousin Tom - April 19th
-
-May
-• Grandma - May 25th
-
-June
-• Brother Jim - June 14th
-
-July
-• Anniversary (Mom & Dad) - July 4th
-
-August
-• My Birthday! - August 22nd
-
-September
-• Nephew Billy - September 9th
-
-October
-• Friend Dave - October 31st (Halloween baby!)
-
-November
-• Aunt Mary - November 11th
-
-December
-• Christmas parties all month!
-• New Year's Eve party planning
-
-NOTES:
-- Remember to buy cards early
-- Mom likes flowers, Dad prefers books
-- Don't forget anniversary gift!
+God bless us Ricky brothers
         `
       },
       "Vacation Plans.doc": {
@@ -89,181 +54,50 @@ SUMMER VACATION PLANNING
 
 DESTINATION OPTIONS:
 
-1. YELLOWSTONE NATIONAL PARK
-Pros:
-• Beautiful scenery and wildlife
-• Educational for the kids
-• Reasonable driving distance
-• Camping available
+1. Batam, Indonesia
+   - Beaches and water sports
+   - Cultural experiences
+   - Probably will visit the stardom of Batam Centre  
 
-Cons:
-• Crowded in summer
-• Weather can be unpredictable
-• Limited dining options
+2. Singapore
+   - Shopping and entertainment
+   - Universal Studios
+   - Gardens by the Bay
 
-2. FLORIDA BEACHES
-Pros:
-• Warm weather guaranteed
-• Lots of activities for family
-• Good restaurants
-• Theme parks nearby
+3. West Sumatra, Indonesia
+   - Nature and adventure
+   - Cultural heritage of the Minangkabau people
+   - Delicious local cuisine of the West Highlands
 
-Cons:
-• Expensive flights
-• Very crowded
-• Hurricane season
+4. Jerusalem, Palestine
+   - Historical and religious sites
+   - Definitely will visit the Al-Aqsa Mosque
+   - Cultural experiences in the Old City
+   - Heard that the local food is amazing
 
-3. COLORADO MOUNTAINS
-Pros:
-• Cool temperatures
-• Great hiking trails
-• Beautiful mountain views
-• Relatively affordable
-
-Cons:
-• Long drive
-• Altitude adjustment needed
-• Limited entertainment for kids
-
-BUDGET ESTIMATE:
-Transportation: $800
-Lodging (7 nights): $700
-Food & Dining: $500
-Activities: $400
-Miscellaneous: $200
-Total: $2,600
-
-DECISION: Leaning towards Colorado - great compromise between cost and experience!
-
-TO DO:
-□ Book hotel reservations
-□ Plan driving route
-□ Pack camping gear
-□ Arrange pet care
-□ Stop mail delivery
+5. Constantinople, Turkey
+   - Rich history and architecture
+   - Hagia Sophia and Topkapi Palace
+   - Cultural experiences in the city
+   - Blue Mosque is a must-see
+   - Bosporus cruise for stunning views
         `
       },
-      "Meeting Notes.doc": {
-        title: "Weekly Team Meeting - December 14, 1998",
+      "Complaint Letter.doc": {
+        title: "Complaint Letter to Skaju Corporation",
         content: `
-WEEKLY TEAM MEETING NOTES
-Date: December 14, 1998
-Attendees: John, Sarah, Mike, Lisa, Bob (Manager)
+This company despite being one of the most popular in the city is so fucking disappointing in terms of its facility.
 
-AGENDA ITEMS DISCUSSED:
+1. Initially when I got here, my first impression was great due to its fast internet connection and good food. However, as time goes its internet became one of the worst and its food is getting worse. I don't know what the hell is going on with this company but I am so disappointed with it.
 
-1. Y2K PREPARATION UPDATE
-• Testing completed on main systems
-• Database backup procedures reviewed
-• Emergency contact list finalized
-• Status: ON TRACK
+2. The staff here are so unprofessional. They don't know how to treat their customers well. I have been here for a month and I have never seen them smile or greet their customers. They are always on their phones and don't care about the customers.
 
-2. NEW CLIENT PROJECT - ACCOUNTING SOFTWARE
-• Requirements gathering phase complete
-• Design document in progress
-• Timeline: 6 months development
-• Resources: 3 developers assigned
+3. The facilities here are so dirty and unkempt. The bathrooms are always dirty and the floors are sticky. I have seen rats running around the washroom and I am so disgusted by it.
 
-3. OFFICE EQUIPMENT UPGRADES
-• New computers approved for Q1 1999
-• Pentium II processors, 64MB RAM
-• Windows 98 licenses purchased
-• Installation scheduled for January
+4. The mosque here is so small and cramped. It can only accommodate a few people and it is always full. I have seen people praying in their room because there is no space inside.
 
-4. TRAINING OPPORTUNITIES
-• Visual Basic 6.0 training available
-• Web development workshop in February
-• Conference in Las Vegas - approved for 2 attendees
-
-ACTION ITEMS:
-• John: Complete database design by Dec 18
-• Sarah: Review UI mockups with client
-• Mike: Research backup solutions
-• Lisa: Coordinate equipment delivery
-• Bob: Finalize training budget
-
-NEXT MEETING: December 21, 1998
-
-NOTES:
-- Holiday party scheduled for December 18th
-- Office closed December 24-25, January 1
-- Remember to submit timesheets by Friday
-        `
-      },
-      "Web Ideas.txt": {
-        title: "Website Development Ideas",
-        content: `
-WEBSITE DEVELOPMENT IDEAS & NOTES
-
-CURRENT TRENDS (1998):
-• Animated GIFs are very popular
-• Background music on websites
-• Visitor counters essential
-• Guest books for interaction
-• Frames for navigation
-• Blinking text for emphasis
-
-TECHNICAL CONSIDERATIONS:
-• HTML 4.0 features to explore
-• JavaScript for interactivity  
-• CSS for better styling
-• Image optimization for dial-up
-• Browser compatibility (IE4, Netscape 4)
-
-PROJECT IDEAS:
-
-1. COMPANY WEBSITE REDESIGN
-Current site problems:
-- Takes too long to load (56k modem)
-- Navigation is confusing
-- Information is outdated
-- No search functionality
-
-Proposed improvements:
-- Streamlined graphics
-- Clear navigation menu
-- Regular content updates
-- Contact form
-- Product catalog
-
-2. PERSONAL PORTFOLIO SITE
-Features to include:
-- Resume and work samples
-- Photo gallery
-- Personal blog/journal
-- Links to favorite sites
-- Email contact form
-
-3. LOCAL BUSINESS DIRECTORY
-Concept:
-- Directory of local businesses
-- Categories and search
-- Maps and directions
-- Customer reviews
-- Advertising opportunities
-
-LEARNING RESOURCES:
-• "HTML: The Definitive Guide" book
-• WebMonkey tutorials online
-• Local college web design course
-• Web developer forums and newsgroups
-
-TOOLS TO MASTER:
-• FrontPage 98
-• Dreamweaver
-• Photoshop for web graphics
-• FTP client for uploads
-• Web server administration
-
-FUTURE CONSIDERATIONS:
-• E-commerce possibilities
-• Database integration
-• Server-side scripting
-• Flash animations
-• Streaming media
-
-Note: Keep watching technology trends - the web is changing fast!
-        `
+5. A lot of customers here knows how to code but the company doesn't utilize their skills. They just sit around and do nothing. I have seen people who can create amazing websites and apps but the company doesn't care about it.
+      `
       }
     };
 
