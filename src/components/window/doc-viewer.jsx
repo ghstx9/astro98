@@ -23,7 +23,7 @@ Currently enrolled in Computer Science program
 EXPERIENCE
 Software Developer - SMK Negeri 7 Batam (2024-Present)
 • Developed Windows applications using C++
-• Worked on over 7 Projects using frameworks like Astro and React
+• Worked on over 7 projects using frameworks like Astro and React
 • Collaborated with team members to enhance software functionality
 
 REFERENCES
