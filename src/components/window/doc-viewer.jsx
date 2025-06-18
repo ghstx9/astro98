@@ -7,37 +7,24 @@ const WordDocViewer = ({ fileName = "Document1.doc", onClose }) => {
   const getDocumentContent = (docName) => {
     const documents = {
       "Resume.doc": {
-        title: "Professional Resume",
+        title: "My Resume.",
         content: `
 Ricky Aldiansyah M. Al-Rasuli
 Batam City, Indonesia
-Phone: (555) 123-4567
-Email: jsmith@email.com
+Email: rickyaldiansyah92@gmail.com
 
 OBJECTIVE
-Seeking a challenging position in software development where I can utilize my programming skills and contribute to innovative projects.
+Seeking experience in software development and programming, with a focus on Windows applications and legacy systems.
 
 EDUCATION
-Bachelor of Science in Computer Science
-State University, 1996
-GPA: 3.7/4.0
+SMK Negeri 7 Batam
+Currently enrolled in Computer Science program
 
 EXPERIENCE
-Software Developer - Tech Solutions Inc. (1997-Present)
-• Developed Windows applications using Visual Basic and C++
-• Maintained legacy systems and databases
-• Collaborated with team members on various projects
-
-Intern - Local Computer Store (Summer 1996)
-• Assisted customers with computer purchases
-• Performed basic hardware troubleshooting
-• Organized inventory and maintained store displays
-
-SKILLS
-• Programming Languages: C++, Visual Basic, Pascal
-• Operating Systems: Windows 95/98, DOS
-• Applications: Microsoft Office, Netscape Navigator
-• Database: Microsoft Access, dBase
+Software Developer - SMK Negeri 7 Batam (2024-Present)
+• Developed Windows applications using C++
+• Worked on over 7 Projects using frameworks like Astro and React
+• Collaborated with team members to enhance software functionality
 
 REFERENCES
 Available upon request
@@ -390,8 +377,8 @@ Note: Keep watching technology trends - the web is changing fast!
           className="bg-white shadow-lg mx-auto p-12 min-h-full"
           style={{
             width: '8.5in',
-            maxWidth: '100%',
-            fontSize: `${zoomLevel}%`,
+            transform: `scale(${zoomLevel / 100})`, 
+            transformOrigin: 'top center',           
             fontFamily: 'Times New Roman, serif',
             lineHeight: '1.5'
           }}
