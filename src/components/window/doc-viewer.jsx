@@ -9,8 +9,8 @@ const WordDocViewer = ({ fileName = "Document1.doc", onClose }) => {
       "Resume.doc": {
         title: "Professional Resume",
         content: `
-JOHN SMITH
-123 Main Street, Anytown, USA 12345
+Ricky Aldiansyah M. Al-Rasuli
+Batam City, Indonesia
 Phone: (555) 123-4567
 Email: jsmith@email.com
 
