@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 // Taskbar Component
-const Taskbar = ({ windows = [], activeWindow, onWindowRestore, onStartMenuToggle }) => {
+const Taskbar = ({ windows = [], activeWindow = null, onWindowRestore = null, onStartMenuToggle = null }) => {
   const [startMenuOpen, setStartMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [showDate, setShowDate] = useState(false);
@@ -53,6 +53,9 @@ const Taskbar = ({ windows = [], activeWindow, onWindowRestore, onStartMenuToggl
     return "/icons/my-computer.png";
   };
 
+  // Filter windows to show in taskbar (non-minimized or currently active)
+  const visibleWindows = windows.filter(w => !w.minimized || w.id === activeWindow);
+
   return (
     <div className="h-8 bg-gray-300 border-t-2 border-gray-100 border-l-gray-100 border-r-gray-600 border-b-gray-600 flex items-center px-1 relative shadow-inner">
       {/* Start Button */}
@@ -101,12 +104,12 @@ const Taskbar = ({ windows = [], activeWindow, onWindowRestore, onStartMenuToggl
               <MenuItem icon="/icons/my-documents.png" text="Favorites" hasArrow />
               <MenuItem icon="/icons/my-documents.png" text="Documents" hasArrow />
               <MenuItem icon="/icons/monitorgear.png" text="Settings" hasArrow />
-              <MenuItem icon="/icons/monitorgear.png" text="Find" hasArrow />
+              <MenuItem icon="/icons/directoryexplorer.png" text="Find" hasArrow />
               <MenuItem icon="/icons/monitorgear.png" text="Help" />
               <MenuItem icon="/icons/regedit.png" text="Regedit" />
               <div className="border-t border-gray-400 my-1"></div>
-              <MenuItem icon="/icons/systemgear.png" text="Log Off..." />
-              <MenuItem icon="/icons/systemgear.png" text="Shut Down..." />
+              <MenuItem icon="/icons/monitorgear.png" text="Log Off..." />
+              <MenuItem icon="/icons/monitorgear.png" text="Shut Down..." />
             </div>
           </div>
         </>
@@ -114,7 +117,7 @@ const Taskbar = ({ windows = [], activeWindow, onWindowRestore, onStartMenuToggl
 
       {/* Task Buttons Area */}
       <div className="flex-1 mx-2 flex items-center gap-1 overflow-hidden">
-        {windows.filter(w => !w.minimized || w.id === activeWindow).map(window => (
+        {visibleWindows.map(window => (
           <TaskButton
             key={window.id}
             window={window}
@@ -129,13 +132,18 @@ const Taskbar = ({ windows = [], activeWindow, onWindowRestore, onStartMenuToggl
       <div className="flex items-center border-l-2 border-gray-600 border-t-gray-100 bg-gray-200 h-6 pl-2">
         {/* System Tray Icons */}
         <div className="flex items-center gap-1 px-1">
-          <img 
-            src="/icons/speaker.png" 
-            alt="Volume"
-            className="w-4 h-4 cursor-pointer hover:bg-gray-300 p-0.5 rounded"
-            style={{ imageRendering: 'pixelated' }}
-            draggable={false}
-          />
+          <div 
+            className="w-4 h-4 cursor-pointer hover:bg-gray-300 p-0.5 rounded flex items-center justify-center text-xs"
+            title="Volume"
+          >
+            <img
+              src="/icons/speaker.png"
+              alt="Volume"
+              className="w-4 h-4"
+              style={{ imageRendering: 'pixelated' }}
+              draggable={false}
+            />
+          </div>
         </div>
         
         {/* Clock */}
