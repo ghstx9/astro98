@@ -33,7 +33,7 @@ Credits:
 --------
 This simulation recreates the beloved Windows 98 interface for educational and nostalgic purposes. All classic Windows elements have been faithfully reproduced to bring back memories of computing in the late 1990s.
 
-© 2025 Ricky Aldiansyah
+© 2025 Ricky Aldiansyah Marouf
 
 Although this project is incomplete and I probably won't continue it anytime soon, i still want to thank you for exploring this retro computing experience!
 
