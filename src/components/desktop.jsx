@@ -3,6 +3,7 @@ import MyComputerApp from './window/my-computer.jsx';
 import MyDocumentsApp from './window/my-documents.jsx'; 
 import RecycleBinApp from './window/recycle-bin.jsx';
 import WordDocViewer from './window/doc-viewer.jsx';
+import AboutTxtViewer from './window/about-txt.jsx';
 import Taskbar from './taskbar.jsx';
 
 const Desktop = () => {
@@ -140,6 +141,14 @@ const Desktop = () => {
             selected={selectedIcon === "solitaire"}
             onSelect={() => setSelectedIcon("solitaire")}
             onDoubleClick={() => openWindow('solitaire', 'Solitaire')}
+          />
+          <DesktopIcon 
+            iconSrc="/icons/notepad32.png" 
+            label="About.txt" 
+            id="about-txt"
+            selected={selectedIcon === "about-txt"}
+            onSelect={() => setSelectedIcon("about-txt")}
+            onDoubleClick={() => openWindow('about', 'About.txt - Notepad')}
           />
         </div>
 
@@ -322,6 +331,8 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
         return <SolitaireContent />;
       case 'word': 
         return <WordDocViewer fileName={window.fileName} />;
+      case 'about':
+        return <AboutTxtViewer />;
       default:
         return <DefaultContent />;
     }
@@ -430,6 +441,8 @@ const Window = ({ window, isActive, onClose, onMinimize, onBringToFront, onUpdat
             <img src="/icons/recycle-bin.png" alt="Recycle Bin" className="w-4 h-4 inline" />
           ) : window.title === "Solitaire" ? (
             <img src="/icons/solitaire.png" alt="Solitaire" className="w-4 h-4 inline" />
+          ) : window.title === "About.txt - Notepad" ? (
+            <img src="/icons/notepad32.png" alt="Notepad" className="w-4 h-4 inline" />
           ) : window.type === "word" ? (
             <img src="/icons/docum.png" alt="Word Document" className="w-4 h-4 inline" />
           ) : (
@@ -496,6 +509,8 @@ const SolitaireContent = () => (
     </div>
   </div>
 );
+
+
 
 const DefaultContent = () => (
   <div className="p-4">
