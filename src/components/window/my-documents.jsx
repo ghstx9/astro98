@@ -62,7 +62,7 @@ const MyDocumentsApp = ({ onOpenDocument }) => {
 
       switch (fileType) {
         case 'txt':
-          message = `Opening ${item.name} in Notepad...`;
+          message = `Can't open ${item.name}. Stay tuned for .txt support.`;
           break;
         case 'bmp':
         case 'jpg':
