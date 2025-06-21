@@ -81,18 +81,14 @@ const Desktop = () => {
     setNextId(nextId + 1);
   };
 
-  // Handler for taskbar window restore
   const handleWindowRestore = (windowId) => {
     const window = windows.find(w => w.id === windowId);
     if (window) {
       if (window.minimized) {
-        // If window is minimized, restore it
         restoreWindow(windowId);
       } else if (activeWindow === windowId) {
-        // If window is active, minimize it
         minimizeWindow(windowId);
       } else {
-        // If window exists but not active, bring to front
         bringToFront(windowId);
       }
     }
