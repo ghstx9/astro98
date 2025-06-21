@@ -100,16 +100,15 @@ const Taskbar = ({ windows = [], activeWindow = null, onWindowRestore = null, on
             
             {/* Menu items */}
             <div className="p-1">
-              <MenuItem icon="/icons/my-documents.png" text="Programs" hasArrow />
-              <MenuItem icon="/icons/my-documents.png" text="Favorites" hasArrow />
-              <MenuItem icon="/icons/my-documents.png" text="Documents" hasArrow />
+              <MenuItem icon="/icons/favo.png" text="Favorites" hasArrow />
+              <MenuItem icon="/icons/docume.png" text="Documents" hasArrow />
               <MenuItem icon="/icons/monitorgear.png" text="Settings" hasArrow />
-              <MenuItem icon="/icons/directoryexplorer.png" text="Find" hasArrow />
-              <MenuItem icon="/icons/monitorgear.png" text="Help" />
+              <MenuItem icon="/icons/find.png" text="Find" hasArrow />
+              <MenuItem icon="/icons/help.png" text="Help" />
               <MenuItem icon="/icons/regedit.png" text="Regedit" />
               <div className="border-t border-gray-400 my-1"></div>
-              <MenuItem icon="/icons/monitorgear.png" text="Log Off..." />
-              <MenuItem icon="/icons/monitorgear.png" text="Shut Down..." />
+              <MenuItem icon="/icons/keywin.png" text="Log Off..." />
+              <MenuItem icon="/icons/shutdown.png" text="Shut Down..." />
             </div>
           </div>
         </>
