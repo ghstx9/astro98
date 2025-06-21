@@ -3,6 +3,7 @@ import MyComputerApp from './window/my-computer.jsx';
 import MyDocumentsApp from './window/my-documents.jsx'; 
 import RecycleBinApp from './window/recycle-bin.jsx';
 import WordDocViewer from './window/doc-viewer.jsx';
+import Taskbar from './taskbar.jsx';
 
 const Desktop = () => {
   const [windows, setWindows] = useState([]);
@@ -80,73 +81,99 @@ const Desktop = () => {
     setNextId(nextId + 1);
   };
 
+  // Handler for taskbar window restore
+  const handleWindowRestore = (windowId) => {
+    const window = windows.find(w => w.id === windowId);
+    if (window) {
+      if (window.minimized) {
+        // If window is minimized, restore it
+        restoreWindow(windowId);
+      } else if (activeWindow === windowId) {
+        // If window is active, minimize it
+        minimizeWindow(windowId);
+      } else {
+        // If window exists but not active, bring to front
+        bringToFront(windowId);
+      }
+    }
+  };
+
   return (
-    <div 
-      className="w-full h-full relative"
-      style={{
-        backgroundImage: 'url("wallpaper/wallpaper.png")', 
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor: '#008080' 
-      }}
-      onClick={handleDesktopClick}
-    >
-      {/* Desktop Icons */}
-      <div className="absolute top-4 left-4 space-y-4">
-        <DesktopIcon 
-          iconSrc="/icons/my-computer.png" 
-          label="My Computer" 
-          id="my-computer"
-          selected={selectedIcon === "my-computer"}
-          onSelect={() => setSelectedIcon("my-computer")}
-          onDoubleClick={() => openWindow('explorer', 'My Computer')}
-        />
-        <DesktopIcon 
-          iconSrc="/icons/my-documents.png" 
-          label="My Documents" 
-          id="my-documents"
-          selected={selectedIcon === "my-documents"}
-          onSelect={() => setSelectedIcon("my-documents")}
-          onDoubleClick={() => openWindow('explorer', 'My Documents')}
-        />
-        <DesktopIcon 
-          iconSrc="/icons/recycle-bin.png" 
-          label="Recycle Bin" 
-          id="recycle-bin"
-          selected={selectedIcon === "recycle-bin"}
-          onSelect={() => setSelectedIcon("recycle-bin")}
-          onDoubleClick={() => openWindow('recycle', 'Recycle Bin')}
-        />
-        <DesktopIcon 
-          iconSrc="/icons/solitaire.png" 
-          label="Solitaire" 
-          id="solitaire"
-          selected={selectedIcon === "solitaire"}
-          onSelect={() => setSelectedIcon("solitaire")}
-          onDoubleClick={() => openWindow('solitaire', 'Solitaire')}
-        />
+    <div className="h-screen flex flex-col">
+      <div 
+        className="flex-1 relative"
+        style={{
+          backgroundImage: 'url("wallpaper/wallpaper.png")', 
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: '#008080' 
+        }}
+        onClick={handleDesktopClick}
+      >
+        {/* Desktop Icons */}
+        <div className="absolute top-4 left-4 space-y-4">
+          <DesktopIcon 
+            iconSrc="/icons/my-computer.png" 
+            label="My Computer" 
+            id="my-computer"
+            selected={selectedIcon === "my-computer"}
+            onSelect={() => setSelectedIcon("my-computer")}
+            onDoubleClick={() => openWindow('explorer', 'My Computer')}
+          />
+          <DesktopIcon 
+            iconSrc="/icons/my-documents.png" 
+            label="My Documents" 
+            id="my-documents"
+            selected={selectedIcon === "my-documents"}
+            onSelect={() => setSelectedIcon("my-documents")}
+            onDoubleClick={() => openWindow('explorer', 'My Documents')}
+          />
+          <DesktopIcon 
+            iconSrc="/icons/recycle-bin.png" 
+            label="Recycle Bin" 
+            id="recycle-bin"
+            selected={selectedIcon === "recycle-bin"}
+            onSelect={() => setSelectedIcon("recycle-bin")}
+            onDoubleClick={() => openWindow('recycle', 'Recycle Bin')}
+          />
+          <DesktopIcon 
+            iconSrc="/icons/solitaire.png" 
+            label="Solitaire" 
+            id="solitaire"
+            selected={selectedIcon === "solitaire"}
+            onSelect={() => setSelectedIcon("solitaire")}
+            onDoubleClick={() => openWindow('solitaire', 'Solitaire')}
+          />
+        </div>
+
+        {/* Windows */}
+        {windows.map(window => (
+          !window.minimized && (
+            <Window
+              key={window.id}
+              window={window}
+              isActive={activeWindow === window.id}
+              onClose={() => closeWindow(window.id)}
+              onMinimize={() => minimizeWindow(window.id)}
+              onBringToFront={() => bringToFront(window.id)}
+              onUpdate={(updates) => {
+                setWindows(windows.map(w => 
+                  w.id === window.id ? { ...w, ...updates } : w
+                ));
+              }}
+              openDocument={openDocument} 
+            />
+          )
+        ))}
       </div>
 
-      {/* Windows */}
-      {windows.map(window => (
-        !window.minimized && (
-          <Window
-            key={window.id}
-            window={window}
-            isActive={activeWindow === window.id}
-            onClose={() => closeWindow(window.id)}
-            onMinimize={() => minimizeWindow(window.id)}
-            onBringToFront={() => bringToFront(window.id)}
-            onUpdate={(updates) => {
-              setWindows(windows.map(w => 
-                w.id === window.id ? { ...w, ...updates } : w
-              ));
-            }}
-            openDocument={openDocument} 
-          />
-        )
-      ))}
+      {/* Taskbar */}
+      <Taskbar 
+        windows={windows}
+        activeWindow={activeWindow}
+        onWindowRestore={handleWindowRestore}
+      />
     </div>
   );
 };
