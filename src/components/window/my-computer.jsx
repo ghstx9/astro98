@@ -103,6 +103,8 @@ const MyComputerApp = ({ onNavigateToMyDocuments }) => {
       }
     } else if (item.type === 'drive' && !item.accessible) {
       alert(`${item.name} is not accessible buddy, sorry :(`);
+    } else if (item.type === 'file' && item.name === 'InternetExplorer.exe') {
+      alert("Astro98 doesn't support Internet Explorer, go use Netscape bozo.");
     }
   };
 
